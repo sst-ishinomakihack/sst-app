@@ -1,0 +1,18 @@
+<h1>ログイン</h1>
+
+<%= form_for(:session, url: sessions_path) do |f| %>
+
+  <table border="1">
+    <tr>
+      <th><%= f.label :email, 'メールアドレス' %></th>
+      <td><%= f.text_field :email %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :password, 'パスワード' %></th>
+      <td><%= f.password_field :password %></td>
+    </tr>
+  </table>
+
+  <%= f.submit 'ログインする' %>
+
+<% end %>
