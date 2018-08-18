@@ -15,7 +15,7 @@
       <tr>
         <td><%= post.created_at.in_time_zone('Tokyo') %></td>
         <td><%= post.user_name %></td>
-        <td><%= post.content %></td>
+        <td><%= translate_timeline(post.content) %></td>
         <td><%= link_to 'Show', post %></td>
       </tr>
     <% end %>

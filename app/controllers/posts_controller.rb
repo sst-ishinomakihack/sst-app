@@ -29,14 +29,11 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     parsed_content = post_content["content"]
-    translator = GoogleTypeTranslator.new
     @post = Post.new
-    @post.content = translator.translate(parsed_content,current_user.language)
-    @post.user_id = current_user.id
+    @post.content = parsed_content
     @post.user_name = current_user.name
     @post.save
 
-    @index_content = translator.translate(parsed_content,current_user.language)
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
@@ -89,31 +86,4 @@ class PostsController < ApplicationController
     def user_id
       @current_user.id
     end
-end
-
-
-class GoogleTypeTranslator
-  def translate(query,users_lang)
-    url = URI.parse('https://www.googleapis.com/language/translate/v2')
-    params = {
-        q: query,
-        target: users_lang,
-        source: lang_kind(query),
-        key: "API-KEY"
-    }
-    url.query = URI.encode_www_form(params)
-    res = Net::HTTP.get_response(url)
-    JSON.parse(res.body)["data"]["translations"].first["translatedText"]
-  end
-
-  def lang_kind(query)
-    url = URI.parse('https://translation.googleapis.com/language/translate/v2/detect')
-    params = {
-        q: query,
-        key: "API-Key"
-    }
-    url.query = URI.encode_www_form(params)
-    res = Net::HTTP.get_response(url)
-    JSON.parse(res.body)["data"]["detections"][0][0]["language"]
-  end
 end
