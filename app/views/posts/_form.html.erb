@@ -11,12 +11,9 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
-  </div>
+  <%= form.text_area :content %>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="actions a-right">
+    <%= form.submit "投稿", :class =>'btn' %>
   </div>
 <% end %>

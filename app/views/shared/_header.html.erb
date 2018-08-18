@@ -1,0 +1,13 @@
+<header>
+  <div class="inner">
+    <nav>
+      <div class="link"><a href="" class="<%= "active" if current == 'timeline' %>"><%= embedded_svg("home.svg", class: "icon") %>ホーム</a></div>
+      <% if signed_in? %>
+        <div class="link"><a href=""  class="<%= "active" if current == 'setting' %>">設定</a></div>
+        <div class="link sign-up">ログインしています</div>
+      <% else %>
+        <div class="link sign-up"><span>ログインしていません</span><a href="" class="<%= "active" if current == 'create' %>">登録</a></div>
+      <% end %>
+    </nav>
+  </div>
+</header>
