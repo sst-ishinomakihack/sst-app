@@ -99,7 +99,7 @@ class GoogleTypeTranslator
         q: query,
         target: users_lang,
         source: lang_kind(query),
-        key: "AIzaSyAo3VKW-Q2tOzO68BwlMtxGnenP96SlGJA"
+        key: "API-KEY"
     }
     url.query = URI.encode_www_form(params)
     res = Net::HTTP.get_response(url)
@@ -110,7 +110,7 @@ class GoogleTypeTranslator
     url = URI.parse('https://translation.googleapis.com/language/translate/v2/detect')
     params = {
         q: query,
-        key: "AIzaSyAo3VKW-Q2tOzO68BwlMtxGnenP96SlGJA"
+        key: "API-Key"
     }
     url.query = URI.encode_www_form(params)
     res = Net::HTTP.get_response(url)
