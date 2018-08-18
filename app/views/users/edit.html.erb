@@ -19,6 +19,10 @@
       <th><%= f.label :password_confirmation, '確認' %></th>
       <td><%= f.password_field :password_confirmation %></td>
     </tr>
+    <tr>
+      <th><%= f.label :language, '言語コードの再設定' %></th>
+      <td><%= f.text_field :language %></td>
+    </tr>
   </table>
 
   <%= f.submit 'アカウントを編集する' %>
