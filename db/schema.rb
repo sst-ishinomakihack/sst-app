@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_18_002109) do
+ActiveRecord::Schema.define(version: 2018_08_18_173824) do
+
+  create_table "posts", force: :cascade do |t|
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "user_name"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
@@ -19,6 +26,7 @@ ActiveRecord::Schema.define(version: 2018_08_18_002109) do
     t.string "remember_token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "language"
   end
 
 end
