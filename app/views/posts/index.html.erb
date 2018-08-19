@@ -1,38 +1,45 @@
-<p id="notice"><%= notice %></p>
+<%= render partial: 'shared/header', locals: { current: 'timeline' } %>
 
-<h1>Posts</h1>
+<main class="inner">
+  <div id="form">
+    <%= link_to 'New Post', new_post_path, :class =>'btn' %>
+    
+    <!-- <p>ログインするとすべての投稿があなたの見たい言語で見られるようになります！登録は右上のボタンから！</p> -->
+    <p id="notice"><%= notice %></p>
+  </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Content</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-  <% if signed_in? %>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.created_at.in_time_zone('Tokyo') %></td>
-        <td><%= post.user_name %></td>
-        <td><%= translate_timeline(post.content) %></td>
-        <td><%= link_to 'Show', post %></td>
-      </tr>
-    <% end %>
+  <div id="timeline">
+    <% if signed_in? %>
+      <% @posts.each do |post| %>
+      <div class="box">
+        <div class="prof">
+          <%= image_tag 'prof_icon/icon_panda.png', :class =>'icon' %>
+        </div>
+        <div class="message">
+          <p class="name"><%= post.user_name %></p>
+          <%= translate_timeline(post.content) %>
+          <p class="date"><%= post.created_at.in_time_zone('Tokyo') %></p>
+        </div>
+      </div>
+      <% end %>
+
     <% else %>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.created_at.in_time_zone('Tokyo') %></td>
-        <td><%= post.user_name %></td>
-        <td><%= post.content %></td>
-        <td><%= link_to 'Show', post %></td>
-      </tr>
+      <% @posts.each do |post| %>
+      <div class="box">
+        <div class="prof">
+          <%= image_tag 'prof_icon/icon_panda.png', :class =>'icon' %>
+        </div>
+        <div class="message">
+          <p class="name"><%= post.user_name %></p>
+          <%= post.content %>
+          <p class="date"><%= post.created_at.in_time_zone('Tokyo') %></p>
+        </div>
+      </div>
+      <% end %>
     <% end %>
-    <% end %>
-  </tbody>
-</table>
+  </div><!-- /#timeline -->
 
-<br>
+</main>
 
-<%= link_to 'New Post', new_post_path %>
+<%= render partial: 'shared/footer' %>
