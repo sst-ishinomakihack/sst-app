@@ -1,30 +1,39 @@
-<h1>アカウント作成</h1>
+<%= render partial: 'shared/header', locals: { current: 'create' } %>
 
-<%= form_for(@user) do |f| %>
+<main class="inner" id="users">
+  <h1>アカウント作成</h1>
+  <div id="form">
+    <%= form_for(@user) do |f| %>
 
-  <table border="1">
-    <tr>
-      <th><%= f.label :name, '名前' %></th>
-      <td><%= f.text_field :name %></td>
-    </tr>
-    <tr>
-      <th><%= f.label :email, 'メールアドレス' %></th>
-      <td><%= f.text_field :email %></td>
-    </tr>
-    <tr>
-      <th><%= f.label :password, 'パスワード' %></th>
-      <td><%= f.password_field :password %></td>
-    </tr>
-    <tr>
-      <th><%= f.label :password_confirmation, '確認' %></th>
-      <td><%= f.password_field :password_confirmation %></td>
-    </tr>
-    <tr>
-      <th><%= f.label :language, '言語コード' %></th>
-      <td><%= f.text_field :language %></td>
-    </tr>
-  </table>
+      <table>
+        <tr>
+          <th><%= f.label :name, '名前' %></th>
+          <td><%= f.text_field :name %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :email, 'メールアドレス' %></th>
+          <td><%= f.text_field :email %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :password, 'パスワード' %></th>
+          <td><%= f.password_field :password %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :password_confirmation, '確認' %></th>
+          <td><%= f.password_field :password_confirmation %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :language, '言語コード' %></th>
+          <td><%= f.text_field :language %></td>
+        </tr>
+      </table>
 
-  <%= f.submit 'アカウントを作成する' %>
+      <div class="a-right">
+        <%= f.submit 'アカウントを作成する', :class =>'btn' %>
+      </div>
+  
+    <% end %>
+  </div>
+</main>
 
-<% end %>
+<%= render partial: 'shared/footer' %>

@@ -11,3 +11,33 @@
   <p><%= link_to '編集', edit_user_path %></p>
   <p><%= link_to 'トップへ', root_url %></p>
 <% end %>
+
+<%= render partial: 'shared/header', locals: { current: 'setting', is_signin: true } %>
+<main class="inner" id="users">
+  <h1>ユーザ情報</h1>
+  <div id="form">
+    <table>
+      <tr>
+        <th>名前</th>
+        <td><%= @user.name %></td>
+      </tr>
+      <tr>
+        <th>メールアドレス</th>
+        <td><%#= @user.email #%>example@example.com</td>
+      </tr>
+      <tr>
+        <th>使用言語</th>
+        <td><%#= @user.language #%>日本語</td>
+      </tr>
+    </table>
+
+    <div class="btn-area">
+      <% if current_user?(@user) %>
+        <p><%= link_to '編集', edit_user_path, :class => 'btn' %></p>
+        <p><%= link_to 'トップへ', root_url, :class =>'btn' %></p>
+      <% end %>
+
+    </div>
+  </div>
+</main>
+<%= render partial: 'shared/footer' %>

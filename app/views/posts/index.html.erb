@@ -2,12 +2,10 @@
 
 <main class="inner">
   <div id="form">
-    <%= link_to 'New Post', new_post_path, :class =>'btn' %>
-    
+  <%= link_to 'New Post', new_post_path, :class =>'btn' %>
     <!-- <p>ログインするとすべての投稿があなたの見たい言語で見られるようになります！登録は右上のボタンから！</p> -->
     <p id="notice"><%= notice %></p>
   </div>
-
 
   <div id="timeline">
     <% if signed_in? %>
