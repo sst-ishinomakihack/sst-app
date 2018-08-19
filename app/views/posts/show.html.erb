@@ -3,7 +3,11 @@
 <p>
   <strong>Content:</strong>
 <p>名前:<%= @post.user_name %></p>
+<% if signed_in? %>
   <%= translate_timeline(@post.content) %>
+  <% else %>
+  <%= @post.content %>
+<% end %>
 </p>
 
 <%= link_to 'Back', posts_path %>
